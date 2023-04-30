@@ -6,7 +6,7 @@ on:
       - 02-01
 
 jobs:
-  example:
+  node_runner:
     runs-on: ubuntu-latest
     steps:
       - name: Code checkout
