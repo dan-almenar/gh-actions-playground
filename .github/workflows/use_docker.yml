@@ -1,0 +1,16 @@
+name: Docker Node
+
+on:
+  push:
+    branches:
+      - 02-02
+
+jobs:
+  docker_node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v2
+      - name: docker_img
+        uses: 'docker://node:latest'
+      - run: node example.js
