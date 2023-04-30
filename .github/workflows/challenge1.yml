@@ -26,6 +26,6 @@ jobs:
   depends:
     name: With dependencies
     runs-on: ubuntu-latest
-    needs: [job1, job2, job3]
+    needs: [ubuntu, windows, macos]
     steps:
       - run: date 
