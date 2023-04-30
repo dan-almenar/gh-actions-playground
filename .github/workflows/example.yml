@@ -1,7 +1,12 @@
 name: example
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - 01-01
+  pull_request:
+    branches:
+      - master
 jobs:
   job1:
     name: First
