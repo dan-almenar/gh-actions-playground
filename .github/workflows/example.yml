@@ -1,0 +1,31 @@
+name: example
+
+on: [push]
+
+jobs:
+  job1:
+    name: First
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step One
+        uses: actions/checkout@v2
+      - name: Step Two
+        run: env | sort
+  job2:
+    name: Second
+    runs-on: windows-latest
+    steps:
+      - name: Step One
+        uses: actions@v2
+      - name: Step Two
+        run: "Get-Children Env: | Sort-Object Name"
+
+  job3:
+    name: Third
+    runs-on: macos-latest
+    steps:
+      - name: Step One
+        uses: actions@v2
+      - name: Step Two
+        run: env | sort
+
