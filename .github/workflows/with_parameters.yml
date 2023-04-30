@@ -1,0 +1,17 @@
+name: Action with arguments
+
+on:
+  push:
+    branches:
+      - 03-01-arguments
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Go set up
+        uses: actions/setup-go@v4
+      - run: go run hello-world.go
+
