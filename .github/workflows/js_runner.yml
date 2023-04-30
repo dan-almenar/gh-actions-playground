@@ -1,0 +1,16 @@
+name: Node Runner
+
+on:
+  push:
+    branches:
+      - 02-01
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v2
+      - name: Node setup 
+        uses: actions/setup-node@v2.5.2
+      - run: node example.js
