@@ -6,7 +6,7 @@ on:
       - 03-01-arguments
 
 jobs:
-  checkout:
+  with_parameters:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -14,4 +14,9 @@ jobs:
       - name: Go set up
         uses: actions/setup-go@v4
       - run: go run hello-world.go
+  second:
+    needs: [with_parameters]
+    runs-on: ubuntu-latest
+    steps:
+      - run: date
 
