@@ -1,0 +1,16 @@
+name: pull_request
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  job1:
+    name: Job One
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step
+        uses: actions/checkout@v2
+      - name: Second Step
+        run: ls -a
