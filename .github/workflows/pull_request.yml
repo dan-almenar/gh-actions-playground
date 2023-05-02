@@ -1,17 +1,24 @@
-name: pull_request
+name: Auto merge Owner's changes
 
 on:
   pull_request:
-    branches:
-      - master
-  push:
+    types: [opened, reopened]
     branches:
       - master
 
 jobs:
-  ubuntu:
+  merge:
+    if: github.actor === github.repository_owner
     runs-on: ubuntu-latest
     steps:
-      - name: print success message
-        run: echo "Success!"
-
+      - name: checkout 
+        uses: actions/checkout@v3
+      - name: approve pull pull_request
+        uses: hmarr/auto-approve-action@v3.2.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          review-message: "Auto approved automated PR"
+      - name: merge 
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
