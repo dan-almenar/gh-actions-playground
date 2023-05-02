@@ -8,7 +8,7 @@ on:
 
 jobs:
   approve:
-    if: github.actor == github.repository.owner
+    if: github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
