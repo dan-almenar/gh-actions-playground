@@ -26,6 +26,7 @@ jobs:
           echo ${{ env.WORKFLOW_ENV }}
           echo ${{ env.JOB_ENV }}
           echo ${{ env.STEP_ENV }}
+          echo ${{ env.OVER_RIDE }}
       - name: Print (bash syntax)
         env:
           OVER_RIDE: 'step'        
