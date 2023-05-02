@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, reopened, auto_merge_enabled]
     branches:
-      - 05-02-pull-requests
+      - master
 
 jobs:
   approve:
@@ -23,6 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: merge 
-        uses: pascalgn/automerge-action@v0.15.6
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        uses: reitermarkus/automerge@v2.6.0
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
