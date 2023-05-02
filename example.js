@@ -1,0 +1,1 @@
+console.warn("%cHELLO WORLD!", "font-size: 20px; color: firebrick")
