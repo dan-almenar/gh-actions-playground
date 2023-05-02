@@ -31,6 +31,6 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: "automerge"
       - name: output
-        if: steps.merge.outputs.mergeResult == merged
+        if: steps.merge.outputs.mergeResult == 'merged'
         run: |
           echo "succesfully merged changes into master branch"
