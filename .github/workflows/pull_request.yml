@@ -8,7 +8,7 @@ on:
 
 jobs:
   approve:
-    if: ${{ env.GITHUB_ACTOR }} == ${{ env.GITHUB_REPOSITORY_OWNER }}
+    if: github.actor == github.repository.owner
     runs-on: ubuntu-latest
     steps:
       - name: checkout 
