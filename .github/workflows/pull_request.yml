@@ -18,7 +18,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Second Step
         run: |
-          echo ACTOR: ${{ env.GITHUB_ACTOR }}
-          echo OWNER: ${{ env.GITHUB_REPOSITORY_OWNER }}
-          [[ ${{ env.GITHUB_ACTOR }} == ${{ env.GITHUB_REPOSITORY_OWNER }} ]] && echo "Match!" || echo "not a match"
+          [[ ${{ env.GITHUB_ACTOR }} == ${{ env.GITHUB_REPOSITORY_OWNER }} ]] && echo "MATCH!" || echo "NOT A MATCH!"
           
