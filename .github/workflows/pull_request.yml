@@ -4,6 +4,10 @@ on:
   pull_request:
     branches:
       - master
+  push:
+    branches:
+      - master
+      - 05-01-pull-requests
 
 jobs:
   job1:
@@ -13,4 +17,8 @@ jobs:
       - name: First Step
         uses: actions/checkout@v2
       - name: Second Step
-        run: ls -a
+        run: |
+          echo ACTOR: ${{ env.GITHUB_ACTOR }}
+          echo OWNER: ${{ env.GITHUB_REPOSITORY_OWNER }}
+          [[ ${{ env.GITHUB_ACTOR }} == ${{ env.GITHUB_REPOSITORY_OWNER }} ]] && echo "Match!" || echo "not a match"
+
