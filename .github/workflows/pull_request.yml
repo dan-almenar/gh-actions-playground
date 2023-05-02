@@ -8,7 +8,7 @@ on:
 
 jobs:
   approve:
-    if: github.actor == github.repository.owner
+    if: github.actor == 'dan-almenar'
     runs-on: ubuntu-latest
     steps:
       - name: checkout 
