@@ -1,7 +1,7 @@
 name: Auto merge Owner's changes
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, reopened, auto_merge_enabled]
     branches:
       - master
@@ -25,6 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: merge 
-        uses: reitermarkus/automerge@v2.6.0
-        with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
