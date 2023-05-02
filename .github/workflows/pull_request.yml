@@ -1,14 +1,17 @@
-name: Auto approve Owner's PRs
+name: Auto merge Owner's changes
 
 on:
   pull_request:
     types: [opened, reopened, auto_merge_enabled]
     branches:
       - master
+
 jobs:
   approve:
     if: github.actor == 'dan-almenar'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: checkout 
         uses: actions/checkout@v3
