@@ -18,6 +18,7 @@ jobs:
       - name: upload binary 
         uses: actions/upload-artifact@v3.1.2
         with:
+          name: hello
           path: ./main
   runner:
     runs-on: ubuntu-latest
@@ -25,5 +26,7 @@ jobs:
     steps:
       - name: download binary
         uses: actions/download-artifact@v2.1.1
+        with:
+          name: hello
       - name: run binary
-        run: main
+        run: hello
