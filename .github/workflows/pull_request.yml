@@ -2,10 +2,13 @@ name: Auto merge Owner's changes
 
 on:
   pull_request:
-    types: [opened, reopened, auto_merge_enabled]
+    types: [opened, reopened, auto_merge_enabled, labeled]
     branches:
       - master
-
+  check_suite:
+    types:
+      - completed
+  status: {}
 jobs:
   approve:
     if: github.actor == 'dan-almenar'
