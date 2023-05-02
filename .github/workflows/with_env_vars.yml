@@ -21,13 +21,14 @@ jobs:
       - name: Print name (yaml syntax)
         env:
           STEP_ENV: 'step level env'
-          OVER_RIDE: 'step'
         run: |
           echo ${{ env.FIRST_NAME }} ${{ env.LAST_NAME }}
           echo ${{ env.WORKFLOW_ENV }}
           echo ${{ env.JOB_ENV }}
           echo ${{ env.STEP_ENV }}
       - name: Print (bash syntax)
+        env:
+          OVER_RIDE: 'step'        
         run: |
           echo $FIRST_NAME $LAST_NAME
           echo $OVER_RIDE
