@@ -1,0 +1,34 @@
+name: With Env Vars
+
+env:
+  WORKFLOW_ENV: 'workflow level env'
+  OVER_RIDE: 'Workflow'
+
+on:
+  push:
+    branches:
+      - 03-02-env-vars
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    env:
+      FIRST_NAME: 'Dan'
+      LAST_NAME: 'Almenar'
+      JOB_ENV: 'Job level env'
+      OVER_RIDE: 'Job'
+    steps:
+      - name: Print name (yaml syntax)
+        env:
+          STEP_ENV: 'step level env'
+          OVER_RIDE: 'step'
+        run: |
+          echo ${{ env.FIRST_NAME }} ${{ env.LAST_NAME }}
+          echo ${{ env.WORKFLOW_ENV }}
+          echo ${{ env.JOB_ENV }}
+          echo ${{ env.STEP_ENV }}
+      - name: Print (bash syntax)
+        run: |
+          echo $FIRST_NAME $LAST_NAME
+          echo $OVER_RIDE
+
