@@ -17,5 +17,5 @@ jobs:
       - name: First Step
         uses: actions/checkout@v2
       - name: Second Step
-        run: echo [ ${{ env.GITHUB_ACTOR }} == ${{ env.GITHUB_REPOSITORY_OWNER }} ]
+        run: echo [[ ${{ env.GITHUB_ACTOR }} == ${{ env.GITHUB_REPOSITORY_OWNER }} ]]
           
