@@ -18,7 +18,7 @@ jobs:
       JOB_ENV: 'Job level env'
       OVER_RIDE: 'Job'
     steps:
-      - name: Print name (yaml syntax)
+      - name: YAML syntax
         env:
           STEP_ENV: 'step level env'
         run: |
@@ -27,10 +27,13 @@ jobs:
           echo ${{ env.JOB_ENV }}
           echo ${{ env.STEP_ENV }}
           echo ${{ env.OVER_RIDE }}
-      - name: Print (bash syntax)
+      - name: Bash syntax
         env:
           OVER_RIDE: 'step'        
         run: |
           echo $FIRST_NAME $LAST_NAME
           echo $OVER_RIDE
+
+# The OVER_RIDE env value will be 'job' on the YAML syntax
+# and 'step' on the Bash syntax 
 
