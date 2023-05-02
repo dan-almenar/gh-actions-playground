@@ -4,13 +4,14 @@ on:
   pull_request:
     branches:
       - master
+  push:
+    branches:
+      - master
 
 jobs:
-  job1:
-    name: Job One
+  ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - name: First Step
-        uses: actions/checkout@v2
-      - name: Second Step
-        run: ls -a
+      - name: print success message
+        run: echo "Success!"
+
