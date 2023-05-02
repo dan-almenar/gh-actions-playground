@@ -5,7 +5,10 @@ on:
     types: [opened, reopened, auto_merge_enabled]
     branches:
       - master
-
+  pull_request_target:
+    types: [opened, reopened, auto_merge_enabled]
+    branches:
+      - master
 jobs:
   approve:
     if: github.actor == 'dan-almenar'
