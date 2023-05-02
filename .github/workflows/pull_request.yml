@@ -25,6 +25,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: merge 
+        id: merge
         uses: pascalgn/automerge-action@v0.15.6
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "automerge"
+      - name: output
+        if: steps.merge.outputs.mergeResult == "merged"
+        run: |
+          echo "succesfully merged changes into master branch"
+          
