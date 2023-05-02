@@ -17,6 +17,8 @@ jobs:
         run: go build main.go
       - name: upload binary 
         uses: actions/upload-artifact@v3.1.2
+        with:
+          path: ./main
   runner:
     runs-on: ubuntu-latest
     needs: [builder]
