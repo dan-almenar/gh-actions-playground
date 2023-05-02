@@ -2,7 +2,7 @@ name: Auto merge Owner's changes
 
 on:
   pull_request_target:
-    types: [opened, reopened]
+    types: [opened, reopened, auto_merge_enabled]
     branches:
       - master
 
