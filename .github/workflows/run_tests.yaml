@@ -18,3 +18,16 @@ jobs:
     needs: [test]
     steps:
       - run: echo "success!"
+  create-pull-request:
+    needs: [test, print_status]
+    if: github.actor == 'dan-almenar'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: make new PR
+        uses: peter-evans/create-pull-request@v5.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: automerge
+          title: Auto generated PR from ${{ env.GITHUB_SHA }}
