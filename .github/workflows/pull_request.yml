@@ -25,15 +25,15 @@ jobs:
           review-message: "Auto approved automated PR"
   merge:
     needs: [approve]
-    runs-on: ubuntu-latest
     permissions: write-all
+    runs-on: ubuntu-latest
     steps:
       - name: merge 
         id: merge
-        uses: KeisukeYamashita/auto-pull-request-merge@v1.0.6
-        with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          labels: automerge
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: automerge
       - name: output
         if: steps.merge.outputs.mergeResult == 'merged'
         run: |
