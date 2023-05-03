@@ -29,10 +29,10 @@ jobs:
     steps:
       - name: merge 
         id: merge
-        uses: pascalgn/automerge-action@v0.15.6
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: automerge
+        uses: KeisukeYamashita/auto-pull-request-merge@v1.0.6
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          labels: automerge
       - name: output
         if: steps.merge.outputs.mergeResult == 'merged'
         run: |
