@@ -26,6 +26,8 @@ jobs:
   merge:
     needs: [approve]
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: merge 
         id: merge
