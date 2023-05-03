@@ -27,11 +27,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: make new PR
-        uses: peter-evans/create-pull-request@v5.0.1
+        uses: repo-sync/pull-request@v2.12.1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: automerge
-          base: master
-          title: Auto generated PR from ${{ env.GITHUB_SHA }}
-          branch-suffix: timestamp
-          delete-branch: true
+          pr_label: automerge
