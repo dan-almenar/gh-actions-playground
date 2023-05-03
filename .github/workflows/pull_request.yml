@@ -11,7 +11,7 @@ on:
   status: {}
 jobs:
   approve:
-    if: github.actor == 'dan-almenar'
+    if: github.actor == 'dan-almenar' || github.actor == 'github-actions'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
