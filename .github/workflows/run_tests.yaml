@@ -31,3 +31,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: automerge
           title: Auto generated PR from ${{ env.GITHUB_SHA }}
+          branch-suffix: timestamp
+          delete-branch: true
