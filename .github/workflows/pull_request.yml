@@ -38,3 +38,4 @@ jobs:
         if: steps.merge.outputs.mergeResult == 'merged'
         run: |
           echo "succesfully merged changes into master branch"
+
