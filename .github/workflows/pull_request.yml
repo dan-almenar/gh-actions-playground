@@ -1,16 +1,40 @@
-name: pull_request
+name: Auto merge Owner's changes
 
 on:
   pull_request:
+    types: [opened, reopened, auto_merge_enabled, labeled]
     branches:
       - master
-
+  check_suite:
+    types:
+      - completed
+  status: {}
 jobs:
-  job1:
-    name: Job One
+  approve:
+    if: github.actor == 'dan-almenar'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v3
+      - name: approve pull pull_request
+        uses: hmarr/auto-approve-action@v3.2.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          review-message: "Auto approved automated PR"
+  merge:
+    needs: [approve]
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - name: First Step
-        uses: actions/checkout@v2
-      - name: Second Step
-        run: ls -a
+      - name: merge 
+        id: merge
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: automerge
+      - name: output
+        if: steps.merge.outputs.mergeResult == 'merged'
+        run: |
+          echo "succesfully merged changes into master branch"

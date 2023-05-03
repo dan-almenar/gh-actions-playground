@@ -1,0 +1,20 @@
+name: Tests runner
+
+on:
+  push:
+    branches:
+      - 05-02-pull-requests
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: test
+        run: node example.js
+  print_status:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - run: echo "success!"
