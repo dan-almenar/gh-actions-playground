@@ -2,7 +2,7 @@ name: Auto merge Owner's changes
 
 on:
   pull_request:
-    types: [opened, reopened, auto_merge_enabled, labeled]
+    types: [opened, reopened]
     branches:
       - master
   check_suite:
@@ -10,21 +10,8 @@ on:
       - completed
   status: {}
 jobs:
-  create-pull-request:
-    if: github.actor == 'dan-almenar'
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: make new PR
-        uses: peter-evans/create-pull-request@v5.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: automerge
-          title: Auto generated PR from ${{ env.GITHUB_SHA }}
   approve:
     if: github.actor == 'dan-almenar'
-    needs: [create-pull-request]
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -37,7 +24,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           review-message: "Auto approved automated PR"
   merge:
-    needs: [create-pull-request, approve]
+    needs: [approve]
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
