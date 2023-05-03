@@ -13,13 +13,8 @@ jobs:
         uses: actions/checkout@v3
       - name: test
         run: node example.js
-  print_status:
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-      - run: echo "success!"
   create-pull-request:
-    needs: [test, print_status]
+    needs: [test]
     permissions: write-all
     if: github.actor == 'dan-almenar'
     runs-on: ubuntu-latest
