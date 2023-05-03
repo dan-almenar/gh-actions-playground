@@ -11,7 +11,7 @@ on:
   status: {}
 jobs:
   approve:
-    if: github.actor == 'dan-almenar' || github.actor == 'github-actions'
+    if: github.actor == 'dan-almenar'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -38,4 +38,3 @@ jobs:
         if: steps.merge.outputs.mergeResult == 'merged'
         run: |
           echo "succesfully merged changes into master branch"
-
