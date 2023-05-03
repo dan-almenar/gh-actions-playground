@@ -20,6 +20,7 @@ jobs:
       - run: echo "success!"
   create-pull-request:
     needs: [test, print_status]
+    permissions: write-all
     if: github.actor == 'dan-almenar'
     runs-on: ubuntu-latest
     steps:
